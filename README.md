@@ -41,7 +41,7 @@ After P2P DMA, NVMe DMA Engine interrupts to GPU so that GPU can start copying t
 It is same as vice versa. But, please note that any host memories are not at all involved with GDS operations.
 
 
-I guess GDS also has a plan to use the Controller Memory Buffer (CMB) which NVMe controller exposes for the performance improvement on P2P DMA in the future. But GDS is actually using the BAR space on GPU card for P2P DMA.
+I guess Controller Memory Buffer (CMB) which NVMe controller exposes could contribute performance improvement on GDS which utilizes P2P DMA. But GDS is actually using the BAR space on GPU card for P2P DMA.
 (https://www.eideticom.com/media-news/blog/33-p2pdma-in-linux-kernel-4-20-rc1-is-here.html)
 ```
               Pysical Memory
