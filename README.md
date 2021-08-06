@@ -6,7 +6,7 @@
 GDS enables a DMA engine near storage (NVMe or NIC) to push (or pull) data directly into (and out of) GPU memory. But, before talking about GDS, we should study how DMA works between devices. DMA is a copy between host memory and device's memory. 
 (https://github.com/developer-onizuka/what_is_DMA/blob/main/README.md)
 
-DMA works not only between host memory and device's memory but also between two devices without host memory. 
+But, DMA works not only between host memory and device's memory but also between two devices without host memory. 
 DMA Engine needs to know the physical address of target prior to the copy even between host memory and device's memory or between devices. 
 (https://linuxreviews.org/Peer_To_Peer_DMA)
 
