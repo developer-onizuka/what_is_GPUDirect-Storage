@@ -100,7 +100,7 @@ Linux kernel has some storage stack like below:
  
  ----------------------------
                               Hardware
- NVMe Hardare
+ NVMe Hardware (DMA Engine)
  
 ```
 Linux is not enabled to handle GPU Virtual Addresses needed for DMA. This means NVMe Driver can not let the NVMe's DMA Engine know the GPU's BAR which is target address of DMA. To improve this, NVIDIA is actively working with the community on upstream first to enable Linux to handle GPU VAs for DMA. 
