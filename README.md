@@ -39,6 +39,8 @@ We can use BAR space on a PCI device as a target of DMA. According the P2P DMA, 
 In GDS, GPU provides its BAR and the NVMe Engine accesses the physical address which the kernel mapped into thru the GPU's BAR. The P2P DMA is done thru the copy between GPU BAR space and NVMe Bar space (only 16KB) by NVMe's DMA Engine. (Not by GPU's DMA Engine) 
 After P2P DMA, NVMe DMA Engine interrupts to GPU so that GPU can start copying this DMAed data in BAR space to GPU Memory, so that GPU processor can do his jobs. 
 It is same as vice versa. But, please note that any host memories are not at all involved with GDS operations.
+
+
 I guess GDS also has a plan to use the Controller Memory Buffer (CMB) which NVMe controller exposes for the performance improvement on p2pdma. But GDS is actually using the BAR space on GPU card for P2P DMA.
 (https://www.eideticom.com/media-news/blog/33-p2pdma-in-linux-kernel-4-20-rc1-is-here.html)
 ```
