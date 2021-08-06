@@ -47,9 +47,9 @@ I guess GDS also has a plan to use the Controller Memory Buffer (CMB) which NVMe
 	+----- |XXXXXXXXXX| 16KB  <--------------------------------- |XXXXXXXXXX| /mnt/test.txt
         |      +----------+ 0xfd600000 (NVMe's BAR)                  |          |
        Copy    |          |                                          +----------+
-     (P2P DMA) |          |                                           GPU Memory 4GB
-        |      +----------+ 0xdfffffff                               +----------+
-        |      |          |                           Copying        |          |
+     (P2P DMA) |          |                                           
+        |      +----------+ 0xdfffffff                               GPU Memory (My Quadro P1000 has 4GB memory)
+        |      |          |                           Copying        +----------+
         +----> |XXXXXXXXXX| ---------------------------------------> |XXXXXXXXXX| -----> go to GPU processor
                +----------+ 0xd0000000 (GPU's BAR)                   |          |
                |          |                                          +----------+
