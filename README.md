@@ -9,6 +9,8 @@ The case of DMA between host memory and PCI device:
 
 ```
 The case of DMA between GPU and NVMe device:
+
+
 We can use BARs on a PCI device for the target of DMA.
 ```
 
