@@ -81,5 +81,29 @@ I guess Controller Memory Buffer (CMB) which NVMe controller exposes could contr
 
 ```
 # 4. How to know the BAR Space ?
-But how NVMe engine knows the BAR of GPU ???
+But how NVMe engine knows the BAR of GPU ??? 
+Linux kernel has some storage stack like below:
 
+```
+ User Application
+                              User Space
+ ----------------------------
+                              Kernel Space
+ Virtual File System (VFS)
+ 
+ Filesystem Driver
+
+ Block IO Driver
+ 
+ NVMe Driver
+ 
+ ----------------------------
+                              Hardware
+ NVMe Hardare
+ 
+```
+But Linux is not enabled to handle GPU Virtual Addresses needed for DMA. This means NVMe Driver can not let the NVMe's DMA Engine know the GPU's BAR which is target address of DMA. To improve this, NVIDIA is actively working with the community on upstream first to enable Linux to handle GPU VAs for DMA. 
+
+https://on-demand.gputechconf.com/supercomputing/2019/pdf/sc1922-gpudirect-storage-transfer-data-directly-to-gpu-memory-alleviating-io-bottlenecks.pdf
+
+But I believe nvidia-fs Driver API made solutions to do that on EXT4 filesystem and block IO drivers. So you can do GDS today.
