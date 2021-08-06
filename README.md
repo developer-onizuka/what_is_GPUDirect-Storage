@@ -3,10 +3,10 @@
 
 
 # 1. What is GPUDirect Storage ?
-Before talking about GDS, we should study how DMA works between devices. DMA is a copy between host memory and device's memory. 
+GDS enables a DMA engine near storage (NVMe or NIC) to push (or pull) data directly into (and out of) GPU memory. But, before talking about GDS, we should study how DMA works between devices. DMA is a copy between host memory and device's memory. 
 (https://github.com/developer-onizuka/what_is_DMA/blob/main/README.md)
 
-But DMA works not only between host memory and device's memory but also between two devices without host memory. 
+DMA works not only between host memory and device's memory but also between two devices without host memory. 
 DMA Engine needs to know the physical address of target prior to the copy even between host memory and device's memory or between devices. 
 (https://linuxreviews.org/Peer_To_Peer_DMA)
 
@@ -103,7 +103,7 @@ Linux kernel has some storage stacks like below:
  NVMe Hardware (DMA Engine)
  
 ```
-Linux is not enabled to handle GPU Virtual Addresses needed for DMA and it finally introduce page fault because of no mapping between GPU's BAR space and Virutal Address. This means NVMe Driver can not let the NVMe's DMA Engine know the GPU's BAR which is target address of DMA. To improve this, NVIDIA is actively working with the community on upstream first to enable Linux to handle GPU VAs for DMA. See also followings:
+Linux is not enabled to handle GPU Virtual Addresses needed for DMA and it finally introduce page fault because of no mapping between GPU's BAR space and Virutal Address. This means NVMe Driver can not let the NVMe's DMA Engine know the GPU's BAR which is target address of DMA. Again, Existing operating systems attempting to program DMA engines cannot process GPU virtual addresses without help. To improve this, NVIDIA is actively working with the community on upstream first to enable Linux to handle GPU VAs for DMA. See also followings:
 
 https://on-demand.gputechconf.com/supercomputing/2019/pdf/sc1922-gpudirect-storage-transfer-data-directly-to-gpu-memory-alleviating-io-bottlenecks.pdf
 
