@@ -13,7 +13,8 @@ The case of DMA between host memory and PCI device:
 The case of DMA between GPU and NVMe device (p2pdma):
 
 
-We can use BARs on a PCI device for the target of DMA.
+We can use BARs on a PCI device for the target of DMA. According the p2pdma, One device needs to present a memory BAR, and the other one accesses it. 
+In GDS, GPU provides its BAR and the NVMe Engine accesses the physical address which the kernel mapped into thru the GPU's BAR.
 ```
 
 ```
