@@ -84,7 +84,7 @@ I guess Controller Memory Buffer (CMB) which NVMe controller exposes could contr
 But how NVMe engine knows the BAR of GPU ??? 
 
 
-Linux kernel has some storage stack like below:
+Linux kernel has some storage stacks like below:
 ```
  User Application
                               User Space
