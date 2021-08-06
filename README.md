@@ -14,7 +14,8 @@ The case of DMA between GPU and NVMe device (p2pdma):
 
 
 We can use BARs on a PCI device for the target of DMA. According the p2pdma, One device needs to present a memory BAR, and the other one accesses it. 
-In GDS, GPU provides its BAR and the NVMe Engine accesses the physical address which the kernel mapped into thru the GPU's BAR.
+In GDS, GPU provides its BAR and the NVMe Engine accesses the physical address which the kernel mapped into thru the GPU's BAR. 
+I guess GDS also has a plan to use the Controller Memory Buffer (CMB) which NVMe controller exposes for the performance improvement on p2pdma. But GDS is actually using the BAR space on GPU card for p2pdma.
 ```
 
 ```
