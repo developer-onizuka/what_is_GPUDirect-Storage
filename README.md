@@ -41,6 +41,8 @@ After DMA between host and device, Device's DMA Engine interrupts to CPU so that
 # 3. The case of DMA between GPU and NVMe device (P2P DMA):
 We can use BAR space on a PCI device as a target instead of host memory for DMA operation. According the P2P DMA, One device needs to present a memory BAR, and the other one accesses it. 
 In GDS, GPU provides its BAR and the NVMe Engine accesses the physical address which the kernel mapped into thru the GPU's BAR. The P2P DMA is done thru the copy between GPU BAR space and NVMe Bar space (only 16KB, any legitimate NVMe device must have) by NVMe's DMA Engine. (Not by GPU's DMA Engine) 
+
+
 After P2P DMA, NVMe DMA Engine interrupts to GPU so that GPU can start copying this DMAed data in BAR space to GPU Memory, so that GPU processor can do his jobs. 
 It is same as vice versa. But, please note that any host memories are not at all involved with GDS operations.
 
