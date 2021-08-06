@@ -42,6 +42,7 @@ It is same as vice versa. But, please note that any host memories are not at all
 
 
 I guess GDS also has a plan to use the Controller Memory Buffer (CMB) which NVMe controller exposes for the performance improvement on p2pdma. But GDS is actually using the BAR space on GPU card for P2P DMA.
+
 (https://www.eideticom.com/media-news/blog/33-p2pdma-in-linux-kernel-4-20-rc1-is-here.html)
 ```
               Pysical Memory
