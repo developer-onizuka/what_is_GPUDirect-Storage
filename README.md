@@ -46,7 +46,7 @@ I guess GDS also has a plan to use the Controller Memory Buffer (CMB) which NVMe
                +----------+ 0xfd603fff                Fetching       +----------+
 	+----- |XXXXXXXXXX| 16KB  <--------------------------------- |XXXXXXXXXX| /mnt/test.txt
         |      +----------+ 0xfd600000 (NVMe's BAR)                  |          |
-       Copy    |          |                                          +----------+
+       Copy*   |          |                                          +----------+
      (P2P DMA) |          |                                           
         |      +----------+ 0xdfffffff                               GPU Memory (My Quadro P1000 has 4GB memory)
         |      |          |                           Copying        +----------+
@@ -68,6 +68,8 @@ I guess GDS also has a plan to use the Controller Memory Buffer (CMB) which NVMe
                |          |                                          User Space (Virtual Address)
                |          |
                +----------+ 0x00000000
+
+        * : I believe the NVMe's DMA Engine do this copy. Not by GPU's DMA Engine.
 
 ```
 # 4. How to know the BAR Space ?
