@@ -1,3 +1,5 @@
+# This is my own understandings about GPUDirect Storage by my general knowledge of computer science. So please use this just for your informations.
+
 # 1. What is GPUDirect Storage ?
 Before talking about GDS, we should study how DMA works between devices. DMA is a copy between host memory and device's memory. 
 (https://github.com/developer-onizuka/what_is_DMA/blob/main/README.md)
