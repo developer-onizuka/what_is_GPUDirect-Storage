@@ -81,7 +81,7 @@ I guess Controller Memory Buffer (CMB) which NVMe controller exposes could contr
 
 ```
 # 4. How to know the BAR Space ?
-But how NVMe engine knows the BAR of GPU ??? 
+But how NVMe DMA engine knows the BAR of GPU ??? 
 
 
 Linux kernel has some storage stacks like below:
