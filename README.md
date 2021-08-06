@@ -108,3 +108,5 @@ Linux is not enabled to handle GPU Virtual Addresses needed for DMA and it final
 https://on-demand.gputechconf.com/supercomputing/2019/pdf/sc1922-gpudirect-storage-transfer-data-directly-to-gpu-memory-alleviating-io-bottlenecks.pdf
 
 But I believe nvidia-fs Driver API already made solutions to do that on EXT4 filesystem and block IO drivers instead of the Linux kernel's modification. So you can do GDS today.
+
+https://docs.nvidia.com/gpudirect-storage/overview-guide/index.html#software-arch
