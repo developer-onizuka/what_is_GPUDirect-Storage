@@ -13,7 +13,7 @@ DMA Engine needs to know the physical address of target prior to the copy even b
 # 2. The case of DMA between host memory and PCI device (traditional DMA):
 After DMA between host and device, Device's DMA Engine interrupts to CPU so that CPU can start copying this DMAed data (it's still in kernel space) to the user space by CPU load, which is not DMA. Next, the space in kernel is released for the next DMA operation, which we know it as flow control of DMA.
 ```
-          Pysical Memory
+          Physical Memory
           +----------+
           |          |
           |          |
@@ -50,7 +50,7 @@ It is same as vice versa. But, please note that any host memories are not at all
 I guess Controller Memory Buffer (CMB) which NVMe controller exposes could contribute performance improvement on GDS which utilizes P2P DMA. But GDS is actually using the BAR space on GPU card for P2P DMA.
 (https://www.eideticom.com/media-news/blog/33-p2pdma-in-linux-kernel-4-20-rc1-is-here.html)
 ```
-         Pysical Memory
+         Physical Memory
           +----------+                                          The file in NVMe Storage
           |          |                                          (mount -t ext4 -o data=ordered /dev/nvme0n1 /mnt)
           +----------+ 0xfd603fff                Fetching       +----------+
