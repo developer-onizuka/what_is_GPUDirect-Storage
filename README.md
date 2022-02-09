@@ -105,7 +105,7 @@ Linux kernel has some storage stacks like below:
  NVMe Hardware (DMA Engine)
  
 ```
-Linux is not enabled to handle GPU Virtual Addresses needed for DMA and it finally introduce page fault because of no mapping between GPU's BAR space and Virutal Address. This means NVMe Driver can not let the NVMe's DMA Engine know the GPU's BAR which is target address of DMA. Again, Existing operating systems attempting to program DMA engines cannot process GPU virtual addresses without help. To improve this, NVIDIA is actively working with the community on upstream first to enable Linux to handle GPU VAs for DMA. See also followings:
+Linux is not enabled to handle GPU Virtual Addresses needed for DMA and it finally introduces page fault because of no mapping between GPU's BAR space and Virutal Address. This means NVMe Driver can not let the NVMe's DMA Engine know the GPU's BAR which is target address of DMA. Again, Existing operating systems attempting to program DMA engines cannot process GPU virtual addresses without help. To improve this, NVIDIA is actively working with the community on upstream first to enable Linux to handle GPU VAs for DMA. See also followings:
 
 https://on-demand.gputechconf.com/supercomputing/2019/pdf/sc1922-gpudirect-storage-transfer-data-directly-to-gpu-memory-alleviating-io-bottlenecks.pdf
 
