@@ -60,8 +60,8 @@ I guess Controller Memory Buffer (CMB) which NVMe controller exposes could contr
 (P2P DMA) |          |                                           
    |      +----------+ 0xdfffffff                               GPU Memory (My Quadro P1000 has 4GB memory)
    |      |          |                           Copying        +----------+
-   +----> |XXXXXXXXXX| ---------------------------------------> |XXXXXXXXXX| -----> go to GPU processor
-          +----------+ 0xd0000000 (GPU's BAR)                   |          |
+   +----> |XXXXXXXXXX| ---------------------------------------> |XXXXXXXXXX| -----> 1) Copy to the area associated with CudaMalloc()
+          +----------+ 0xd0000000 (GPU's BAR)                   |          |        2) Cunsumed by GPU core
           |          |                                          +----------+
           |          |
           |          |                                          Kernel Space (Virtual Address)
