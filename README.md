@@ -10,7 +10,10 @@ But, DMA works not only between host memory and device's memory but also between
 DMA Engine needs to know the physical address of target prior to the copy even between host memory and device's memory or between devices. 
 (https://linuxreviews.org/Peer_To_Peer_DMA)
 
-# 2. The case of DMA between host memory and PCI device (traditional DMA):
+# 2. BAR Space
+![BAR.png](https://github.com/developer-onizuka/what_is_GPUDirect-Storage/blob/main/BAR.png)
+
+# 3. The case of DMA between host memory and PCI device (traditional DMA):
 After DMA between host and device, Device's DMA Engine interrupts to CPU so that CPU can start copying this DMAed data (it's still in kernel space) to the user space by CPU load, which is not DMA. Next, the space in kernel is released for the next DMA operation, which we know it as flow control of DMA.
 ```
           Physical Memory
@@ -38,7 +41,7 @@ After DMA between host and device, Device's DMA Engine interrupts to CPU so that
           |          |
           +----------+ 0x00000000
 ```
-# 3. The case of DMA between GPU and NVMe device (P2P DMA):
+# 4. The case of DMA between GPU and NVMe device (P2P DMA):
 We can use BAR space on a PCI device as a target instead of host memory for DMA operation. According the P2P DMA, One device needs to present a memory BAR, and the other one accesses it. 
 In GDS, GPU provides its BAR and the NVMe's DMA Engine accesses the physical address which the kernel mapped into thru the GPU's BAR. The P2P DMA is done thru the copy between GPU BAR space and NVMe Bar space (only 16KB, any legitimate NVMe device must have) by NVMe's DMA Engine. (Not by GPU's DMA Engine) 
 
@@ -82,7 +85,7 @@ I guess Controller Memory Buffer (CMB) which NVMe controller exposes could contr
    * : I believe the NVMe's DMA Engine do this copy. Not by GPU's DMA Engine.
 
 ```
-# 4. How to know the BAR Space ?
+# 5. How to know the BAR Space ?
 But how NVMe DMA engine knows the BAR of GPU ??? 
 
 
