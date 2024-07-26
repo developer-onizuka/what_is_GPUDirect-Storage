@@ -63,10 +63,10 @@ I guess Controller Memory Buffer (CMB) which NVMe controller exposes could contr
    |      +----------+ 0xfd600000 (NVMe's BAR)                  |          |
   Copy*   |          |                                          +----------+
 (P2P DMA) |          |                                           
-   |      +----------+ 0xdfffffff                               GPU BAR Space
+   |      +----------+ 0xdfffffff                               GPU Memory associated with CudaMalloc()
    |      |          |                           Copying        +----------+
-   +----> |XXXXXXXXXX| ---------------------------------------> |XXXXXXXXXX| ---> 1) Copy to the area associated with CudaMalloc()
-          +----------+ 0xd0000000 (GPU's BAR)                   |          |      2) Cunsumed by GPU core
+   +----> |XXXXXXXXXX| ---------------------------------------> |XXXXXXXXXX| ---> Cunsumed by GPU core
+          +----------+ 0xd0000000 (GPU's BAR)                   |          |
           |          |                                          +----------+
           |          |
           |          |                                          Kernel Space (Virtual Address)
