@@ -15,7 +15,7 @@ One of BAR Spaces is for DMA between host memory and device's memory used by the
 ![BAR.png](https://github.com/developer-onizuka/what_is_GPUDirect-Storage/blob/main/BAR.png)
 
 # 3. The case of DMA between host memory and PCI device (traditional DMA):
-First of all, a Device Driver will create the target Physical Address to copy from BAR to host memory through the Virutal Address and will queue it on the FIFO of the descriptor. DMA engine should fetch some instructions created by the Device Driver from host memory in advance. So, it is very important to let the DMA Engine know the Virtual Address before DMA operation.<br>
+First of all, a Device Driver will understand the target Physical Address to copy from BAR to host memory through the Virutal Address and will queue it on the FIFO of the descriptor. DMA engine should fetch these instructions created by the Device Driver from host memory in advance. So, it is very important to let the DMA Engine know the Virtual Address before DMA operation.<br>
 After DMA between host and device, Device's DMA Engine interrupts to CPU so that CPU can start copying this DMAed data (it's still in kernel space) to the user space by CPU load, which is not DMA. Next, the space in kernel is released for the next DMA operation, which we know it as flow control of DMA.
 ```
           Physical Memory
