@@ -64,7 +64,7 @@ I guess Controller Memory Buffer (CMB) which NVMe controller exposes could contr
   Copy*   |          |                                          +----------+
 (P2P DMA) |          |                                           
    |      +----------+ 0xdfffffff                               GPU Memory associated with CudaMalloc()
-   |      |          |                           Copying        +----------+
+   |      |          |     Copy from BAR space to GPU Memory    +----------+
    +----> |XXXXXXXXXX| ---------------------------------------> |XXXXXXXXXX| ---> Cunsumed by GPU core
           +----------+ 0xd0000000 (GPU's BAR)                   |          |
           |          |                                          +----------+
