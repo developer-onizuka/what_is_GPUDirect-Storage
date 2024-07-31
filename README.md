@@ -11,7 +11,7 @@ DMA Engine needs to know the physical address of target prior to the copy even b
 (https://linuxreviews.org/Peer_To_Peer_DMA)
 
 # 2. BAR Space
-One of BAR Spaces is for DMA between host memory and device's memory used by the controller's logic behind its memory. (ex) GPU's memory is for the calculation on GPU card or NIC's memory is for the sending/receiving messages thru the port.<br><br>
+One of BAR Spaces is used by DMA between host memory and device.<br>
 ![BAR.png](https://github.com/developer-onizuka/what_is_GPUDirect-Storage/blob/main/BAR.png)
 
 # 3. The case of DMA between host memory and PCI device (traditional DMA):
