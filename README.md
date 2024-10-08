@@ -1,4 +1,4 @@
-# This is my own understandings about GPUDirect Storage based on my general knowledges of computer sciences. So please use this just for your information.
+# This is my own understandings about GPUDirect Storage based on my general knowledge of computer sciences. So please use this just for your information.
 
 
 
