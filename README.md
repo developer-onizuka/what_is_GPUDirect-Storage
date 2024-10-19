@@ -12,7 +12,52 @@ DMA Engine needs to know the physical address of target prior to the copy even b
 
 # 2. BAR Space
 One of BAR Spaces is used by DMA between host memory and device.<br><br>
-![BAR.png](https://github.com/developer-onizuka/what_is_GPUDirect-Storage/blob/main/BAR.png)
+As you can see below, /proc/iomem says not only the physical address originated from DIMM but the physical address from PCI device or BIOS. When kernel is booting, the device provides its "BAR" which the kernel then maps into main memory. The memory mappings is exposed to userspace via /proc/iomem.
+```
+$ sudo cat /proc/iomem 
+00000000-00000fff : Reserved
+00001000-0009fbff : System RAM
+0009fc00-0009ffff : Reserved
+000a0000-000bffff : PCI Bus 0000:00
+000c0000-000c99ff : Video ROM
+000ca000-000cadff : Adapter ROM
+000cb000-000cd3ff : Adapter ROM
+000f0000-000fffff : Reserved
+  000f0000-000fffff : System ROM
+00100000-7ffcffff : System RAM
+7ffd0000-7fffffff : Reserved
+80000000-afffffff : PCI Bus 0000:00
+b0000000-bfffffff : PCI MMCONFIG 0000 [bus 00-ff]
+  b0000000-bfffffff : Reserved
+c0000000-febfffff : PCI Bus 0000:00
+  d0000000-efffffff : PCI Bus 0000:04
+    d0000000-dfffffff : 0000:04:00.0
+    e0000000-e1ffffff : 0000:04:00.0
+  f0000000-f07fffff : 0000:00:01.0
+
+... snip ...
+
+  fb000000-fcffffff : PCI Bus 0000:04
+    fb000000-fbffffff : 0000:04:00.0
+      fb000000-fbffffff : nvidia
+    fc000000-fc07ffff : 0000:04:00.0
+  fd000000-fd1fffff : PCI Bus 0000:09
+  fd200000-fd3fffff : PCI Bus 0000:08
+  fd400000-fd5fffff : PCI Bus 0000:07
+  fd600000-fd7fffff : PCI Bus 0000:06
+    fd600000-fd603fff : 0000:06:00.0
+      fd600000-fd603fff : nvme
+    
+... snip ...
+
+feffc000-feffffff : Reserved
+fffc0000-ffffffff : Reserved
+100000000-27fffffff : System RAM
+  135000000-135e00eb0 : Kernel code
+  135e00eb1-13685763f : Kernel data
+  136b20000-136ffffff : Kernel bss
+280000000-a7fffffff : PCI Bus 0000:00
+```
 
 # 3. The case of DMA between host memory and PCI device (traditional DMA):
 First of all, a Device Driver will inform the DMA engine about the target Physical Address to copy from BAR to host memory through the Virutal Address and will queue it on the FIFO of the descriptor. DMA engine should actually fetch these instructions created by the Device Driver from host memory in advance. So, it is very important to let the DMA Engine know the Virtual Address before DMA operation.<br>
