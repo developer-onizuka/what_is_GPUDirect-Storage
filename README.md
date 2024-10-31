@@ -155,7 +155,7 @@ Linux kernel has some storage stacks like below:
  NVMe Hardware (DMA Engine)
  
 ```
-Linux is not enabled to handle GPU Virtual Addresses needed for DMA and it finally introduces page fault because of no mapping between GPU's BAR space and Virutal Address. This means NVMe Driver can not let the NVMe's DMA Engine know the GPU's BAR which is target address of DMA. Again, Existing operating systems attempting to program DMA engines cannot process GPU virtual addresses without help. 
+Linux is not enabled to handle GPU Virtual Addresses, which is in user space (not kernel space), needed for DMA and it finally introduces page fault because of no mapping between GPU's BAR space and Virutal Address. This means NVMe Driver can not let the NVMe's DMA Engine know the GPU's BAR which is target address of DMA. Again, Existing operating systems attempting to program DMA engines cannot process GPU virtual addresses without help. 
 
 But I believe nvidia-fs Driver API already made solutions to do that on EXT4 filesystem and block IO drivers instead of the Linux kernel's modification. So you can do GDS today.
 
